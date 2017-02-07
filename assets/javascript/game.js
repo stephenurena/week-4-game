@@ -8,7 +8,8 @@ var numberInputs = { //keep in mind, you may have to add more attributes
 	losses: "",
 	totalScore: "",
 	genNumber: "",
-	firstSelection: "",
+	firstNumber: [""],
+	
 	secondSelection: "",
 
 
@@ -17,13 +18,15 @@ var numberInputs = { //keep in mind, you may have to add more attributes
 		this.genNumber = "";
 	},
 
-	compute: function() {
+	compute: function(i) {
+		return parseInt(this.firstNumber[i]);
 
 
 	},
 
 	updateNumber: function(newNumber) {
-
+		this.firstNumber += newNumber;
+		console.log(this.firstNumber);
 	},
 
 
@@ -53,23 +56,19 @@ while(arr.length < 4){
 }
 $(".numberBtn").each(function (i) {
 	$(this).val(arr[i]);
+	
 })
-
-
+console.log(arr);
+var firstSelection = [];
 
 //Numbers
-	$("button").on("click", function() {
-		//range for initial random number selection
-		// var minNumber = 100;
-		// var maxNumber = 20;
-
-		// var randomNumber = randomNumberFromRange(minNumber, maxNumber);
-		// 	function randomNumberFromRange(min, max){
-		// 		return Math.floor(Math.random()*(max-min+1)+min);
-		// 	}
-		// 	console.log(randomNumber);
-
-	})
+	$(".numberBtn").on("click", function(i) {
+		// numberInputs.updateNumber($(this).val());
+		firstSelection.push(randomnumber[i]);
+		console.log(firstSelection);
+        
+      
+    });
 });
 
 
