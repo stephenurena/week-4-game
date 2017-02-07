@@ -1,0 +1,8 @@
+body {
+	background: url("../images/sayagata-400px.png");
+}
+img {
+	max-height: 150px;
+	max-width: 150px;
+	background: #fff;
+}
