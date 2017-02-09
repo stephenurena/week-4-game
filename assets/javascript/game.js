@@ -8,12 +8,12 @@ var game = {
 	
 
 	//generates a random number for the game
-	randomNumber: (Math.floor(Math.random()*(50-10+1)+10)),
+	randomNumber: (Math.floor(Math.random()*(120-19+1)+19)),
 
 	reset: function(){
 		this.guessValue = 0;
 		$("#guessTotal").html(this.guessValue);
-		this.randomNumber = Math.floor(Math.random()*(50-10+1)+10);
+		this.randomNumber = Math.floor(Math.random()*(120-19+1)+19);
 		$("#genNumber").html(game.randomNumber);
 		
 	},
@@ -22,7 +22,7 @@ var game = {
 		$("#genNumber").html(game.randomNumber);
 		//generates an array of four random numbers for the gem values
 		while(this.gemArr.length < 4) {
-			var gemRamNum = Math.floor(Math.random()*(10-1+1)+1);
+			var gemRamNum = Math.floor(Math.random()*(12-1+1)+1);
 			if(this.gemArr.indexOf(gemRamNum) > -1) continue;
 			this.gemArr[this.gemArr.length] = gemRamNum;
 		};
