@@ -26,22 +26,24 @@
 					<div class="panel-body">
 						<p>You will be given a random number at the start of the game</p><br>
 						<p>There are four crystal below. By clicking on a crystal you will add a specific amount of points to your total score</p><br>
-						<p>You will the game by mathing your total score to the random number, you lose the game if your total score goes above the random number.</p><br>
+						<p>You win the game by matching your total score to the random number, you lose the game if your total score goes above the random number.</p><br>
 						<p> The value of each crystal is hidden from you until you click on it.</p><br>
 						<p>Each time when the game starts, the game will change the values of each crystal.</p><br>
+						<p><strong>Lastly, make sure you have your sound on, enjoy!</strong></p>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="panel panel-default">
+				<div class="panel panel-default text-center">
 					<div class="panel-heading">
 						<h3 class="panel-title">Your Score</h3>
 					</div>
 					<div class="panel-body">
 						<!-- need javascript headline to change on win/loss -->
-						<h2 id="winLoss"> You lost/win</h2>
+						<h2 id="winLoss"></h2>
 						<h3> Wins: <span id="wins">0</span></h3>
 						<h3> Losses: <span id="losses">0</span></h3>
+						<span id="rButton"></span>
 					</div>
 				</div>
 			</div>
@@ -66,19 +68,13 @@
 
 		<div class="panel panel-default">
 			<div class="panel-body text-center">
-				<button id="blueRandom" class="numberBtn"><img src="assets/images/blue.png" class="img-thumbnail" value=""></img></button>
-				<button id="jewelRandom" class="numberBtn"><img src="assets/images/jewel.png" class="img-thumbnail" value=""></img></button>
-				<button id="redRandom" class="numberBtn"><img src="assets/images/red.png" class="img-thumbnail" value=""></img></button>
-				<button id="rubyRandom" class="numberBtn"><img src="assets/images/ruby.png" class="img-thumbnail" value=""></img></button>
+				<button class="numberBtn" id="blueRandom"><img src="assets/images/blue.png" class="img-thumbnail" alt="gem"></img></button>
+				<button class="numberBtn" id="jewelRandom" ><img src="assets/images/jewel.png" class="img-thumbnail" alt="gem"></img></button>
+				<button class="numberBtn" id="redRandom" ><img src="assets/images/red.png" class="img-thumbnail" alt="gem"></img></button>
+				<button class="numberBtn" id="rubyRandom" ><img src="assets/images/ruby.png" class="img-thumbnail" alt="gem"></img></button>
 			</div>
 		</div>
 		
-	<!-- 	Don't think you'll need this extra panel but keep it until you 100% don't need it!
-		<div class="panel panel-default">
-			<div class="panel-body">
-				Basic panel example
-			</div>
-		</div> -->
 	</div>
 	
 </body>

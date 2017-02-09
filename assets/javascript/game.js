@@ -1,89 +1,75 @@
-//GLOBAL Variables
-// ======================================================================================
-
-
-
-var numberInputs = { //keep in mind, you may have to add more attributes
-	wins: "",
-	losses: "",
-	totalScore: "",
-	genNumber: "",
-	firstNumber: [""],
+//game obj
+////===================================================================================================================
+var game = {
+	wins: 0,
+	losses: 0,
+	gemArr: [],
+	guessValue: 0,
 	
-	secondSelection: "",
 
+	//generates a random number for the game
+	randomNumber: (Math.floor(Math.random()*(50-10+1)+10)),
 
-	reset: function() {  // keep in mind, you may have to reset more things
-		this.totalScore = "";
-		this.genNumber = "";
+	reset: function(){
+		this.guessValue = 0;
+		$("#guessTotal").html(this.guessValue);
+		this.randomNumber = Math.floor(Math.random()*(50-10+1)+10);
+		$("#genNumber").html(game.randomNumber);
+		
 	},
 
-	compute: function(i) {
-		return parseInt(this.firstNumber[i]);
-
-
+	start: function(){
+		$("#genNumber").html(game.randomNumber);
+		//generates an array of four random numbers for the gem values
+		while(this.gemArr.length < 4) {
+			var gemRamNum = Math.floor(Math.random()*(10-1+1)+1);
+			if(this.gemArr.indexOf(gemRamNum) > -1) continue;
+			this.gemArr[this.gemArr.length] = gemRamNum;
+		};
 	},
 
-	updateNumber: function(newNumber) {
-		this.firstNumber += newNumber;
-		console.log(this.firstNumber);
+	win: function(){
+		this.wins++;
+		$("#wins").html(game.wins);
+		$("#winLoss").html("<h2>You won!</h2>");
+		$("#winLoss").append('<img class="img-thumbnail" src="assets/images/yes.jpg" alt="yes" />');
+		var win = new Audio("assets/Sound/win.wav");
+		win.play();
+	
 	},
-
-
-};
-
-$(document).ready(function() {
-	//range and function for initial random number selection
-		var genMinNumber = 50;
-		var genMaxNumber = 10;
-
-		var randomNumber = randomNumberFromRange(genMinNumber, genMaxNumber);
-			function randomNumberFromRange(min, max){
-				return Math.floor(Math.random()*(max-min+1)+min);
-				
-			}
-			$("#genNumber").html(randomNumber);
-
-			console.log(randomNumber); //remove console.log when complete
-			
-
-//generate random array function
-var arr = []
-while(arr.length < 4){
-    var randomnumber = Math.floor(Math.random()*(20-1+1)+1);
-    if(arr.indexOf(randomnumber) > -1) continue;
-    arr[arr.length] = randomnumber;
+	lose: function(){
+		this.losses++;
+		$("#losses").html(game.losses);
+		$("#winLoss").html("<h2>You lost!</h2>");
+		$("#winLoss").append('<img class="img-thumbnail" src="assets/images/lossJordan.jpg" alt="cryingJordan" />');
+		var win = new Audio("assets/Sound/horn.mp3");
+		win.play();
+	}
 }
-$(".numberBtn").each(function (i) {
-	$(this).val(arr[i]);
+//event handlers
+//===================================================================================================================
+$(document).ready(function() {
+	game.start()
+	
+	//will assign random values from game.gemArr to buttons
+	$(".numberBtn").each(function (i) {
+		$(this).val(game.gemArr[i]);
+	})
+
+	$(".numberBtn").on("click", function(){
+		game.guessValue += parseInt(this.value);
+		$("#guessTotal").html(game.guessValue);
+		if(game.guessValue === game.randomNumber){
+			game.win();
+			game.reset();
+			
+		}else if(game.guessValue > game.randomNumber){
+			game.lose();
+			game.reset();
+			$(".numberBtn").each(function (i) {
+				$(this).val(game.gemArr[i]);
+			})
+		}
+	})
 	
 })
-console.log(arr);
-var firstSelection = [];
-
-//Numbers
-	$(".numberBtn").on("click", function(i) {
-		// numberInputs.updateNumber($(this).val());
-		firstSelection.push(randomnumber[i]);
-		console.log(firstSelection);
-        
-      
-    });
-});
-
-
-
-
-//Functions (reusable blocks of code)
-// ======================================================================================
-
-
-
-
-
-
-
-
-
-//Main process
-// ======================================================================================
