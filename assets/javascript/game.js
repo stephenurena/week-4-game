@@ -17,7 +17,6 @@ var game = {
 		$("#genNumber").html(game.randomNumber);
 		
 	},
-
 	start: function(){
 		$("#genNumber").html(game.randomNumber);
 		//generates an array of four random numbers for the gem values
@@ -27,7 +26,6 @@ var game = {
 			this.gemArr[this.gemArr.length] = gemRamNum;
 		};
 	},
-
 	win: function(){
 		this.wins++;
 		$("#wins").html(game.wins);
@@ -66,9 +64,6 @@ $(document).ready(function() {
 		}else if(game.guessValue > game.randomNumber){
 			game.lose();
 			game.reset();
-			$(".numberBtn").each(function (i) {
-				$(this).val(game.gemArr[i]);
-			})
 		}
 	})
 	
