@@ -20,6 +20,7 @@ var game = {
 	start: function(){
 		$("#genNumber").html(game.randomNumber);
 		//generates an array of four random numbers for the gem values
+		this.gemArr = [];
 		while(this.gemArr.length < 4) {
 			var gemRamNum = Math.floor(Math.random()*(12-1+1)+1);
 			if(this.gemArr.indexOf(gemRamNum) > -1) continue;
@@ -33,6 +34,7 @@ var game = {
 		$("#winLoss").append('<img class="img-thumbnail" src="assets/images/yes.jpg" alt="yes" />');
 		var win = new Audio("assets/Sound/win.wav");
 		win.play();
+		this.start();
 	
 	},
 	lose: function(){
@@ -42,6 +44,7 @@ var game = {
 		$("#winLoss").append('<img class="img-thumbnail" src="assets/images/lossJordan.jpg" alt="cryingJordan" />');
 		var win = new Audio("assets/Sound/horn.mp3");
 		win.play();
+		this.start();
 	}
 }
 //event handlers
